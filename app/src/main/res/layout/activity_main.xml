@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="@dimen/container_margin"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <Button
+        android:text="退出"
+        android:onClick="onLogoutClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <!--这里使用了LiearLayout的权重
+    下面的意思是RecyclerView的高度是除去Button剩下的高度-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+    </androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>
