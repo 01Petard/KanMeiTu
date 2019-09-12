@@ -1,15 +1,18 @@
 package com.ixuea.courses.kaimeitu.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ixuea.courses.kaimeitu.R;
 import com.ixuea.courses.kaimeitu.domain.Image;
+import com.ixuea.courses.kaimeitu.util.ImageUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,12 +55,16 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
+        private final ImageView iv;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            iv = itemView.findViewById(R.id.iv);
         }
 
         public void bindData(com.ixuea.courses.kaimeitu.domain.Image image) {
             //显示图片
+            ImageUtil.show((Activity) context,iv,image.getUri());
         }
     }
 }

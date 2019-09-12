@@ -38,8 +38,10 @@ public class MainActivity extends BaseActivity {
 
         //设置数据
         ArrayList<Image> datas= new ArrayList<>();
-        for (int i=1;i<100;i++){
-            datas.add(new Image(""));
+        for (int i=1;i<21;i++){
+            //图片来自百度图片
+            //datas.add(new Image(String.format("http://dev-courses-quick.oss-c-beijing.aliyuncs.com/%d.jpg",i)));
+            datas.add(new Image(String.format("http://dev-courses-quick.oss-cn-beijing.aliyuncs.com/%d.jpg",i)));
         }
         ImageAdapter adapter = new ImageAdapter(this);
         rv.setAdapter(adapter);
