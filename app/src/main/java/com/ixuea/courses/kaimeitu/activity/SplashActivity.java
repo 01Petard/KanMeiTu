@@ -63,7 +63,7 @@ public class SplashActivity extends BaseActivity {
                 //而用了多线程后，将耗时任务放到子线程，这样主线程（UI线程）就不会卡住
                 handler.sendEmptyMessage(0);
             }
-        },3000);
+        },1000);//在进入页面停1秒钟
 
 
     }

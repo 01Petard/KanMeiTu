@@ -11,12 +11,22 @@ import android.view.View;
 import com.ixuea.courses.kaimeitu.Adapter.ImageAdapter;
 import com.ixuea.courses.kaimeitu.activity.BaseActivity;
 import com.ixuea.courses.kaimeitu.activity.LoginActivity;
+import com.ixuea.courses.kaimeitu.api.Api;
 import com.ixuea.courses.kaimeitu.domain.Image;
+import com.ixuea.courses.kaimeitu.domain.response.ListResponse;
 import com.ixuea.courses.kaimeitu.util.SharedPreferencesUtil;
 
 import java.util.ArrayList;
 
+import io.reactivex.Observer;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+
 public class MainActivity extends BaseActivity {
+
+    private ImageAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +46,50 @@ public class MainActivity extends BaseActivity {
         final GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         rv.setLayoutManager(gridLayoutManager);
 
-        //设置数据
-        ArrayList<Image> datas= new ArrayList<>();
-        for (int i=1;i<21;i++){
-            //图片来自百度图片
-            //datas.add(new Image(String.format("http://dev-courses-quick.oss-c-beijing.aliyuncs.com/%d.jpg",i)));
-            datas.add(new Image(String.format("http://dev-courses-quick.oss-cn-beijing.aliyuncs.com/%d.jpg",i)));
-        }
-        ImageAdapter adapter = new ImageAdapter(this);
+        //设置数据，仅用来测试
+//        ArrayList<Image> datas= new ArrayList<>();
+//        for (int i=1;i<21;i++){
+//            //图片来自百度图片
+//            //datas.add(new Image(String.format("http://dev-courses-quick.oss-c-beijing.aliyuncs.com/%d.jpg",i)));
+//            datas.add(new Image(String.format("http://dev-courses-quick.oss-cn-beijing.aliyuncs.com/%d.jpg",i)));
+//        }
+        adapter = new ImageAdapter(this);
         rv.setAdapter(adapter);
-        adapter.setData(datas);
+//        adapter.setData(datas);
+
+        fetchData();
+    }
+
+    private void fetchData() {
+        Api
+                .getInstance()
+                .images()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ListResponse<Image>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        
+                    }
+
+                    @Override
+                    public void onNext(ListResponse<Image> imageListResponse) {
+                        //当数据请求完毕后，他会解析成对象，并返回给我们
+                        //真实项目中还会进行一系列的错误处理
+                        adapter.setData(imageListResponse.getdata());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        //真实项目中会将错误，提示给用户，同时写到日志
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     /**

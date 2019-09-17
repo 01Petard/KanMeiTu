@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> {
+
+    private OnItemClickListener onItemClickListener;
     private List<Image> datas = new ArrayList<com.ixuea.courses.kaimeitu.domain.Image>();
     private final Context context;
     private final LayoutInflater inflater;
@@ -38,6 +40,16 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.bindData(datas.get(position));
+
+        if(onItemClickListener!=null){
+            holder.itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    onItemClickListener.onItemClick(position);
+                }
+            });
+        }
+
     }
 
     @Override
@@ -45,7 +57,7 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
         return datas.size();
     }
 
-    public void setData(ArrayList<com.ixuea.courses.kaimeitu.domain.Image> datas){
+    public void setData(List<Image> datas){
         this.datas.clear();
         this.datas.addAll(datas);
         //刷新数据，只有刷新数据，RecycleView才知道数据变更了
@@ -67,4 +79,19 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
             ImageUtil.show((Activity) context,iv,image.getUri());
         }
     }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(int position);
+    }
+
+
+
+
+
+
+
 }
