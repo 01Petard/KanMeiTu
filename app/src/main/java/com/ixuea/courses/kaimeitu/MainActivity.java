@@ -7,14 +7,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.ixuea.courses.kaimeitu.Adapter.ImageAdapter;
 import com.ixuea.courses.kaimeitu.activity.BaseActivity;
+import com.ixuea.courses.kaimeitu.activity.ImageDetailActivity;
 import com.ixuea.courses.kaimeitu.activity.LoginActivity;
 import com.ixuea.courses.kaimeitu.api.Api;
 import com.ixuea.courses.kaimeitu.domain.Image;
 import com.ixuea.courses.kaimeitu.domain.response.ListResponse;
+import com.ixuea.courses.kaimeitu.util.Constants;
 import com.ixuea.courses.kaimeitu.util.SharedPreferencesUtil;
+import com.ixuea.courses.kaimeitu.util.ToastUtil;
 
 import java.util.ArrayList;
 
@@ -54,9 +58,26 @@ public class MainActivity extends BaseActivity {
 //            datas.add(new Image(String.format("http://dev-courses-quick.oss-cn-beijing.aliyuncs.com/%d.jpg",i)));
 //        }
         adapter = new ImageAdapter(this);
+        adapter.setOnItemClickListener(new ImageAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+//                Toast.makeText(MainActivity.this, "click"+position, Toast.LENGTH_SHORT).show();//Toast弹出消息，连续重复
+//                ToastUtil.shortToast(MainActivity.this, "click:" + position);//Toast弹出消息，不连续
+
+                //当点击一个图片后调用这里
+                Image image = adapter.getData(position);
+                //转跳到图片详情页面
+                Intent intent;
+                intent = new Intent(MainActivity.this, ImageDetailActivity.class);
+                //通过intent将图片地址传递到详情界面
+                intent.putExtra(Constants.ID,image.getUri());
+                startActivity(intent);
+
+            }
+        });
         rv.setAdapter(adapter);
 //        adapter.setData(datas);
-
+//
         fetchData();
     }
 
@@ -69,7 +90,7 @@ public class MainActivity extends BaseActivity {
                 .subscribe(new Observer<ListResponse<Image>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
-                        
+
                     }
 
                     @Override
@@ -94,6 +115,7 @@ public class MainActivity extends BaseActivity {
 
     /**
      * 退出按钮
+     *
      * @param view
      */
     public void onLogoutClick(View view) {

@@ -64,6 +64,10 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder> 
         notifyItemRangeInserted(0,this.datas.size());
     }
 
+    public Image getData(int position) {
+        return datas.get(position);
+    }
+
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
