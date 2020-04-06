@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".TextViewActivity"
+    android:background="#000000">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="30dp"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <View
+            android:id="@+id/view_1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="#ff0000"
+            android:layout_margin="20dp" />
+        <TextView
+            android:id="@+id/tv_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="24sp"
+            android:textColor="#00f00f"/>
+        <TextView
+            android:id="@+id/tv_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="黄泽校"
+            android:textSize="24sp"
+            android:textColor="#00f00f"/>
+        <TextView
+            android:id="@+id/tv_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="黄泽校"
+            android:textSize="24sp"
+            android:textColor="#00f00f"/>
+        <TextView
+            android:id="@+id/tv_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="黄泽校"
+            android:textSize="24sp"
+            android:textColor="#00f00f"/>
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="#f30f"
+            android:text="123456789"
+            android:textSize="30dp"
+            android:textColor="#ffffff"
+            android:drawableBottom="@drawable/ic_amiya"/>
+
+        <TextView
+            android:id="@+id/tv_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="黄泽校黄泽校黄泽校黄泽校黄泽校黄泽校黄泽校黄泽校黄泽校"
+            android:textSize="24sp"
+            android:textColor="#00f00f"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+        <Button
+            android:id="@+id/bt_close"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="返回MainActivity" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
