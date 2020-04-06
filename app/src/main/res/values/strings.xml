@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">明日美图</string>
-    <string name="email_hint">请输入邮箱</string>
-    <string name="password_hint">请输入密码（6~15位）</string>
+    <string name="app_name">啊我是驴</string>
+    <string name="email_hint">请输入邮箱（邮箱是：123@qq.com）</string>
+    <string name="password_hint">请输入密码（6~15位）（密码是：123456789）</string>
     <string name="login">登录</string>
     <string name="email_error">你输入的邮箱号格式不正确！</string>
     <string name="password_length_error">你输入的密码长度不正确！</string>
