@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/KanMeiTu.iml" filepath="$PROJECT_DIR$/KanMeiTu.iml" group="KanMeiTu" />
+      <module fileurl="file://$PROJECT_DIR$/app/KanMeiTu-app.iml" filepath="$PROJECT_DIR$/app/KanMeiTu-app.iml" group="KanMeiTu/app" />
+      <module fileurl="file://$PROJECT_DIR$/UI学习/UI学习.iml" filepath="$PROJECT_DIR$/UI学习/UI学习.iml" group="KanMeiTu/UI学习" />
+      <module fileurl="file://$PROJECT_DIR$/UI学习/app/UI学习-app.iml" filepath="$PROJECT_DIR$/UI学习/app/UI学习-app.iml" group="KanMeiTu/UI学习/app" />
+    </modules>
+  </component>
+</project>

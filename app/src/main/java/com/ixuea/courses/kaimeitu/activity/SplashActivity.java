@@ -1,8 +1,5 @@
 package com.ixuea.courses.kaimeitu.activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,7 +8,6 @@ import android.view.WindowManager;
 
 import com.ixuea.courses.kaimeitu.MainActivity;
 import com.ixuea.courses.kaimeitu.R;
-import com.ixuea.courses.kaimeitu.util.SharedPreferencesUtil;
 
 /**
  * 启动页面
